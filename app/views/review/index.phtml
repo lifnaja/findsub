@@ -48,20 +48,26 @@
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
         </div>
-       
+<?php
+    echo $this->tag->form(
+        [
+            "review/addComment",
+            "autocomplete" => "off"
+        ]
+        );
+?>
         <div class="card border-secondary mb-3" style="max-width">
             <div class="card-header">แสดงความคิดเห็น</div>
             <div class="card-body text-secondary">
-                <textarea rows="4" cols="150" name="comment" form="usrform"></textarea>
+                <textarea rows="4" cols="150" name="comment"></textarea>
                 <div class="col-sm-4">
-                    
-                    <button type="button" class="btn btn-primary">แสดงความคิดเห็น</button>
+                    <button type="submit" class="btn btn-primary">แสดงความคิดเห็น</button>
                     <button type="button" class="btn btn-primary">ยกเลิก</button>
                 </div>
             </div>
             
         </div>
-
+        <?php echo $this->tag->endForm();?>
 </div>
 
 
