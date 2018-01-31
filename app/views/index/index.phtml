@@ -1,7 +1,45 @@
-<div class="page-header">
-    <h1>Congratulations!</h1>
+<div class ="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link " href="#">เข้าสู่ระบบ</a>
+        </li>
+        </ul>
+    </div>
+    </nav>
 </div>
-
-<p>You're now flying with Phalcon. Great things are about to happen!</p>
-
-<p>This page is located at <code>views/index/index.phtml</code></p>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">รหัสวิชา</th>
+            <th scope="col">ชื่อวิชา</th>
+            <th scope="col">อาจารย์ผู้สอน</th>
+            <th scope="col">กลุ่ม</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+                <?php
+                $i=1;
+                foreach($subject as $row){
+            ?>
+                <tr>
+                    <th scope="row"><?=$i?></th>
+                    <td><?=$row->SubjectCode?></td>
+                    <td><?=$row->SubjectName?></td>
+                    <td><?=$row->SubProfres?></td>
+                    <td><?=$row->SubGroup?></td>
+                    <td>รายละเอียด</td>
+                </tr>
+                <?php
+                   $i++; }
+                ?>
+        </tbody>
+    </table>
+</div>
