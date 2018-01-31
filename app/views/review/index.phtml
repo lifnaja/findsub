@@ -1,3 +1,29 @@
+<head>
+    <style>
+.com {
+    position: relative;
+}
+
+.com span {
+    background-color: white;
+    padding-right: 10px;
+}
+
+.com:after {
+    content:"";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0.5em;
+    border-top: 1px solid #b8b894;
+    z-index: -1;
+}
+</style>
+</head>
+
+
+
 <div class ="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-right">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,6 +34,9 @@
         <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
+        <li class="nav-item active">
+            <a class="nav-link" ><?=$user->username." (".$user->point." point)"?>  <span class="sr-only">(current)</span></a>
+        </li>
         <li class="nav-item">
             <a class="nav-link " href="#">ออกจากระบบ</a>
         </li>
@@ -17,59 +46,101 @@
 </div>
 
 <div class ="container">
-        <div class="card border-secondary mb-3" style="max-width">
+        <div class="card border-success mb-3" style="max-width">
             <div class="card-header">รายละเอียดวิชา</div>
             <div class="card-body text-secondary">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="row">
+                    <div class="col-md-2"><h5><?=$comment->SubjectCode?></h5></div>
+                    <div class="col-md-10"><h5><?=$comment->SubjectName?></h5></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10"><?=$comment->SubjectNameThai?></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">สังกัด</div>
+                    <div class="col-md-10"><?=$comment->SubSchoolOf?></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">นก./นว.</div>
+                    <div class="col-md-10"><?=$comment->SubUnit?></div>
+                </div>
+                <!-- <p style="border-bottom:1px solid"/> -->
+                <div class="row">
+                    <div class="col-md-2">หลักสูตร</div>
+                    <div class="col-md-10"><?=$comment->SubDegree?></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">กลุ่ม</div>
+                    <div class="col-md-10"><?=$comment->SubGroup?></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">วัน-เวลา</div>
+                    <div class="col-md-10"><?=$comment->Subtime?></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">อาจารย์</div>
+                    <div class="col-md-10"><?=$comment->SubProfres?></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">สอบปลายภาค</div>
+                    <div class="col-md-10"><?=$comment->SubFinalExam?></div>
+                </div><br>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10"> 
+                        <?php if($user->point > 24 ){ ?>
+                            <button type="button" class="btn btn-success">ดูแนวข้อสอบ</button>
+                        <?php }else{ ?>
+                            <button type="button" class="btn btn-success" disabled>ดูแนวข้อสอบ</button>
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
-        </div>
 
+       </div>
+        <p class="com"><span><font color=#8a8a5c>ความคิดเห็น</font></span></p>
+        <?php
+        $i=1;
+            foreach($detail as $data){
+            
+        ?>
         <div class="card border-secondary mb-3" style="max-width">
-            <div class="card-header">Header</div>
+            <div class="card-header">ชื่อ<?=$data->ReviewerName?></div>
             <div class="card-body text-secondary">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">ความคิดเห็นที่ <?=$i?></p>
+                <p class="card-text"><?=$data->Description?></p>
             </div>
+            <div class="card-footer">88like : 0dislike</div>
         </div>
+            <?php $i++;} ?>
+       
 
-        <div class="card border-secondary mb-3" style="max-width">
-            <div class="card-header">Header</div>
-            <div class="card-body text-secondary">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-
-        <div class="card border-secondary mb-3" style="max-width">
-            <div class="card-header">Header</div>
-            <div class="card-body text-secondary">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-<?php
-    echo $this->tag->form(
-        [
-            "review/addComment",
-            "autocomplete" => "off"
-        ]
-        );
-?>
+        <?php
+            echo $this->tag->form(
+                [
+                    "review/addComment",
+                    "autocomplete" => "off"
+                ]
+                );
+        ?>
         <div class="card border-secondary mb-3" style="max-width">
             <div class="card-header">แสดงความคิดเห็น</div>
             <div class="card-body text-secondary">
-                <textarea rows="4" cols="150" name="comment"></textarea>
-                <div class="col-sm-4">
-                    <button type="submit" class="btn btn-primary">แสดงความคิดเห็น</button>
-                    <button type="button" class="btn btn-primary">ยกเลิก</button>
+              <div class="container">
+                <div class="row">
+                  <textarea rows="4" cols="150" name="comment"></textarea>
                 </div>
+                <br>
+                <div class="row">
+                  <button type="submit" class="btn btn-primary">แสดงความคิดเห็น</button>&nbsp;
+                  <button type="button" class="btn btn-primary">ยกเลิก</button>
+                </div>
+
+              </div>
             </div>
-            
+          </div>
+
         </div>
         <?php echo $this->tag->endForm();?>
 </div>
-
-
-
-
