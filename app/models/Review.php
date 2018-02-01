@@ -26,6 +26,20 @@ class Review extends \Phalcon\Mvc\Model
      */
     public $subjectID;
 
+     /**
+     *
+     * @var integer
+     * @Column(type="integer", length=5, nullable=false)
+     */
+    public $dislike;
+
+     /**
+     *
+     * @var integer
+     * @Column(type="integer", length=5, nullable=false)
+     */
+    public $countLike;
+
     /**
      *
      * @var string
@@ -41,6 +55,7 @@ class Review extends \Phalcon\Mvc\Model
         $this->setSchema("findsubject");
         $this->setSource("review");
     }
+
 
     /**
      * Returns table name mapped in the model.

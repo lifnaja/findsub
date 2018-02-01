@@ -55,6 +55,10 @@ class ReviewController extends ControllerBase
         return $this->response->redirect("review/index");
         
     }
+    public function examAction($subjectID)
+    {
+       
+    }
 
 }
 

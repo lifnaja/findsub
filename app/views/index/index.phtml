@@ -13,34 +13,107 @@
     </nav>
 </div>
 <div class="container">
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">รหัสวิชา</th>
-            <th scope="col">ชื่อวิชา</th>
-            <th scope="col">อาจารย์ผู้สอน</th>
-            <th scope="col">กลุ่ม</th>
-            <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-                <?php
-                $i=1;
-                foreach($subject as $row){
-            ?>
+    <div class = "row" style="margin-top: 50px">
+       
+    </div>
+    <div class="row" style="margin-top: 20px">
+        <div class="col-md-12">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">rating</th>
+                    <th scope="col">รหัสวิชา</th>
+                    <th scope="col">ชื่อวิชา</th>
+                    <th scope="col">อาจารย์ผู้สอน</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
                 <tr>
-                    <th scope="row"><?=$i?></th>
-                    <td><?=$row->SubjectCode?></td>
-                    <td><?=$row->SubjectName?></td>
-                    <td><?=$row->SubProfres?></td>
-                    <td><?=$row->SubGroup?></td>
-                    <td><?php echo $this->tag->linkTo(["review/index/".$row->SubjectID,"รายละเอียด"]) ?></td>
+                            <th scope="row">1</th>
+                            <td>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            </td>
+                            <td>SWE-206</td>
+                            <td>Object-Oriented Programming</td>
+                            <td>ผู้ช่วยศาสตราจารย์เยาวเรศ ศิริสถิตย์กุล</td>
+                            <td><?php echo $this->tag->linkTo(["review/index/","รายละเอียด"]) ?></td>
+                        </tr>
+                    <tr>
+                            <th scope="row">2</th>
+                            <td>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star "></span>
+                            </td>
+                            <td>ITE-104</td>
+                            <td>Fundamentals of Information Technology I</td>
+                            <td>อาจารย์กาญจนา หฤหรรษพงศ์</td>
+                            <td><?php echo $this->tag->linkTo(["review/index/","รายละเอียด"]) ?></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star "></span>
+                            </td>
+                            <td>ITE-105</td>
+                            <td>Fundamentals of Information Technology II</td>
+                            <td>อาจารย์สุพพัต รุ่งเรืองศิลป์ </td>
+                            <td><?php echo $this->tag->linkTo(["review/index/","รายละเอียด"]) ?></td>
+                        </tr>
+                        <?php
+                        $i=4;
+                        foreach($subject as $row){
+                    ?>
+                        <tr>
+                            <th scope="row"><?=$i?></th>
+                            <td>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star"></span>
+                            </td>
+                            <td><?=$row->SubjectCode?></td>
+                            <td><?=$row->SubjectName?></td>
+                            <td><?=$row->SubProfres?></td>
+                            <td><?php echo $this->tag->linkTo(["review/index/".$row->SubjectID,"รายละเอียด"]) ?></td>
+                                
+                        </tr>
+                        <?php
+                        $i++; }
+                        ?>
+
+                        <tr>
+                            <th scope="row">9</th>
+                            <td>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                            </td>
+                            <td>MAT-114</td>
+                            <td>Applied Statistics</td>
+                            <td>ผู้ช่วยศาสตราจารย์ ดร.สุพิศ ฤทธิ์แก้ว</td>
+                            <td><?php echo $this->tag->linkTo(["review/index/","รายละเอียด"]) ?></td>
+                        </tr>
+
                         
-                </tr>
-                <?php
-                   $i++; }
-                ?>
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
